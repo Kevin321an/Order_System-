@@ -26,6 +26,7 @@ class ArticlesController extends AppController
    public function index()
     {
         $this->set('articles', $this->Articles->find('all'));
+        
     }
     /**
      * View method
