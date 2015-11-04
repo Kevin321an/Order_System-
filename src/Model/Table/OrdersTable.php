@@ -27,9 +27,29 @@ class OrdersTable extends Table
         $this->table('orders');
         $this->displayField('Name');
         $this->primaryKey('id');
+
+
        
 
     }
 
+    public function validationDefault(Validator $validator)
+    {
+        $validator
+            ->notEmpty('Name')
+            ->requirePresence('Address')
+            ->add('Telephone', [
+                    'length' => [
+                        'rule' => ['minLength', 10],
+                        'message' => 'Telephone need to be 10 characters long',
+                    ]
+                ])            
+            ->requirePresence('Email');
+            /*->notEmpty('Size');*/
+
+        return $validator;
+    }
+
  
 }
+?>

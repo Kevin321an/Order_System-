@@ -61,6 +61,23 @@ class OrdersController extends AppController
         $this->set('_serialize', ['order']);
     }
 
+    public function mComplete()
+    {
+        $order = $this->Orders->newEntity();
+        if ($this->request->is('post')) {
+            $order = $this->Orders->patchEntity($order, $this->request->data);
+            if ($this->Orders->save($order)) {
+                $this->Flash->success(__('The order has been saved.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('The order could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('order'));
+        $this->set('_serialize', ['order']);
+    }
+
+
     /**
      * Edit method
      *

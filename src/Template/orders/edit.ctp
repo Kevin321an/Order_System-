@@ -1,6 +1,4 @@
-<!-- File: src/Template/Articles/add.ctp -->
-
-<h1>Add Orders</h1>
+<h1>Edit Orders</h1>
 <?php
     echo $this->Form->create($order);
     echo $this->Form->input('Name');
