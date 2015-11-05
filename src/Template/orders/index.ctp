@@ -1,6 +1,10 @@
 <h1>Pizza Orders</h1>
 <?= $this->Html->link('Add orders', ['action' => 'add']) ?>
-<?= $this->Html->link('logout', ['action' => 'add']) ?>
+
+
+<?= $this->Html->link('log IN', ['action' => 'add']) ?>
+
+<?= $this->Html->link('Log Out', ['action' => 'add']) ?>
 <table>
     <tr>
         <th>Id</th>

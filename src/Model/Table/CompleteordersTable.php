@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
  * Articles Model
  *
  */
-class Completeorders extends Table
+class CompleteordersTable extends Table
 {
 
     /**

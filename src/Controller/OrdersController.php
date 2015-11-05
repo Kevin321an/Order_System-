@@ -50,6 +50,7 @@ class OrdersController extends AppController
         $order = $this->Orders->newEntity();
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->data);
+            $order->user_id = $this->Auth->user('id');
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('The order has been saved.'));
                 return $this->redirect(['action' => 'index']);
@@ -121,4 +122,28 @@ class OrdersController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        // All registered users can add articles
+        if ($this->request->action === 'add') {
+            return true;
+        }
+
+        // The owner of an article can edit and delete it
+        if (in_array($this->request->action, ['edit', 'delete'])) {
+            $articleId = (int)$this->request->params['pass'][0];
+            if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
+                return true;
+            }
+        }
+
+        return parent::isAuthorized($user);
+    }
+    public function isOwnedBy($articleId, $userId)
+    {
+        return $this->exists(['id' => $articleId, 'user_id' => $userId]);
+    }
+
+
 }

@@ -44,6 +44,7 @@ class AppController extends Controller
         'authorize' => ['Controller'], // Added this line
         'loginRedirect' => [
             'controller' => 'Articles',
+            'controller' => 'Orders',
             'action' => 'index'
         ],
             'logoutRedirect' => [
