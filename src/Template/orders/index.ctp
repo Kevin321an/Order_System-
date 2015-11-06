@@ -10,6 +10,9 @@
         <th>Id</th>
         <th>Name</th>
         <th>Address</th>
+        <th>City</th>
+        <th>Postal</th>
+        <th>province</th>
         <th>Telephone</th>
         <th>Email</th>
         <th>Size</th>
@@ -32,6 +35,15 @@
        
         <td>
             <?= $this->Html->link($orders->Address, ['action' => 'view', $orders->id]) ?>
+        </td>
+        <td>
+            <?= $this->Html->link($orders->City, ['action' => 'view', $orders->id]) ?>
+        </td>
+        <td>
+            <?= $this->Html->link($orders->Postal, ['action' => 'view', $orders->id]) ?>
+        </td>
+        <td>
+            <?= $this->Html->link($orders->province, ['action' => 'view', $orders->id]) ?>
         </td>
         <td>
             <?= $this->Html->link($orders->Telephone, ['action' => 'view', $orders->id]) ?>
@@ -70,13 +82,14 @@
     <?php endforeach; ?>
 </table>
 
-
-
 <table>
     <tr>
         <th>Id</th>
         <th>Name</th>
         <th>Address</th>
+        <th>City</th>
+        <th>Postal</th>
+        <th>province</th>
         <th>Telephone</th>
         <th>Email</th>
         <th>Size</th>
@@ -87,18 +100,27 @@
 
     <!-- Here is where we iterate through our $articles query object, printing out article info -->
 
-    <?php foreach ($completeorders as $completeorders): ?>
+    <?php foreach ($CompleteOrders as $orders): ?>
 
     <tr>
         <td>          
-            <?= $this->Html->link($completeorders->id, ['action' => 'view', $completeorders->id]) ?>
+            <?= $this->Html->link($orders->id, ['action' => 'view', $orders->id]) ?>
          </td>
         <td>          
-            <?= $this->Html->link($completeorders->Name, ['action' => 'view', $completeorders->id]) ?>
+            <?= $this->Html->link($orders->Name, ['action' => 'view', $orders->id]) ?>
          </td>
        
         <td>
             <?= $this->Html->link($orders->Address, ['action' => 'view', $orders->id]) ?>
+        </td>
+        <td>
+            <?= $this->Html->link($orders->City, ['action' => 'view', $orders->id]) ?>
+        </td>
+        <td>
+            <?= $this->Html->link($orders->Postal, ['action' => 'view', $orders->id]) ?>
+        </td>
+        <td>
+            <?= $this->Html->link($orders->province, ['action' => 'view', $orders->id]) ?>
         </td>
         <td>
             <?= $this->Html->link($orders->Telephone, ['action' => 'view', $orders->id]) ?>

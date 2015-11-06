@@ -26,10 +26,7 @@ class OrdersTable extends Table
 
         $this->table('orders');
         $this->displayField('Name');
-        $this->primaryKey('id');
-
-
-       
+        $this->primaryKey('id');       
 
     }
 
@@ -49,6 +46,12 @@ class OrdersTable extends Table
 
         return $validator;
     }
+    
+    
+    public function isOwnedBy($articleId, $userId)
+{
+    return $this->exists(['id' => $articleId, 'user_id' => $userId]);
+}
 
  
 }
