@@ -1,10 +1,19 @@
-<h1>Pizza Orders</h1>
-<?= $this->Html->link('Add orders', ['action' => 'add']) ?>
 
+<section >
+            <ul class="right topColor">
+                <li>Design by: Kevin Zhang</li>               
+            </ul>
+</section>
+<div><h2 ><?= $this->Html->link('Order Pizza', ['action' => 'add']) ?></h2></div>
 
-<?= $this->Html->link('log IN', ['action' => 'add']) ?>
+<section class="top-bar-section">
+            <ul class="right">
+                <li><?= $this->Html->link('LOG IN', ['action' => 'login', 'controller' => 'users']) ?></li>
+                <li><?= $this->Html->link('LOG OUT', ['action' => 'logout', 'controller' => 'users']) ?></li>
+            </ul>
+</section>
 
-<?= $this->Html->link('Log Out', ['action' => 'add']) ?>
+<h3>Current Orders</h3>
 <table>
     <tr>
         <th>Id</th>
@@ -82,6 +91,7 @@
     <?php endforeach; ?>
 </table>
 
+<h3>Past Orders</h3>
 <table>
     <tr>
         <th>Id</th>
@@ -141,11 +151,7 @@
             <?= $this->Html->link($orders->Toping, ['action' => 'view', $orders->id]) ?>
         </td>
 
-        <td>
-            <?= $this->Form->postLink(
-                'Complete',
-                ['action' => 'Complete', $orders->id])
-            ?>
+        <td>            
             <?= $this->Form->postLink(
                 'Delete',
                 ['action' => 'delete', $orders->id],

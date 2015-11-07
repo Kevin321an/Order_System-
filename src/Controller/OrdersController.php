@@ -18,7 +18,8 @@ class OrdersController extends AppController
      */
     public function index()
     {
-        
+
+       
         $orders = $this->Orders->find('all')
             -> where (['complete' => '0']);
         
@@ -98,31 +99,7 @@ class OrdersController extends AppController
     }
 
     public function Complete($id = null)
-        
-        
-        
     {
-        
-        
-        
-       /* $order = $this->Orders->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $order->Complete= 'done'
-            $order = $this->Orders->patchEntity($order, $this->request->data);
-            if ($this->Orders->save($order)) {
-                $this->Flash->success(__('The order has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The order could not be saved. Please, try again.'));
-            }
-        }
-        $this->set(compact('order'));
-        $this->set('_serialize', ['order']);*/
-        
-        
-        
         $order = $this->Orders->get($id, [
             'contain' => []
         ]);
@@ -133,10 +110,7 @@ class OrdersController extends AppController
       
                 $this->Flash->success(__('The order has been completed.'));
                 return $this->redirect(['action' => 'index']);
-          
-      
-        
-    }
+        }
 
 
     /**
@@ -191,38 +165,21 @@ class OrdersController extends AppController
         }
 
         // The owner of an article can edit and delete it
-        if (in_array($this->request->action, ['edit', 'delete'])) {
-            $articleId = (int)$this->request->params['pass'][0];
-            if ($this->Orders->isOwnedBy($articleId, $user['id'])) {
+        if (in_array($this->request->action, ['edit', 'delete', 'Complete'])) {
+            $orderId = (int)$this->request->params['pass'][0];
+            if ($this->Orders->isOwnedBy($orderId, $user['id'])) {
                 return true;
             }
         }
 
         return parent::isAuthorized($user);
     }
-    public function isOwnedBy($articleId, $userId)
+    public function isOwnedBy($orderId, $userId)
     {
-        return $this->exists(['id' => $articleId, 'user_id' => $userId]);
+        return $this->exists(['id' => $orderId, 'user_id' => $userId]);
     }
+
+
     
-    /*public function isAuthorized($user)
-    {
-        // All registered users can add articles
-        if ($this->request->action === 'add') {
-            return true;
-        }
-
-        // The owner of an article can edit and delete it
-        if (in_array($this->request->action, ['edit', 'delete'])) {
-            $articleId = (int)$this->request->params['pass'][0];
-            if ($this->Articles->isOwnedBy($articleId, $user['id'])) {
-                return true;
-            }
-        }
-
-        return parent::isAuthorized($user);
-    }*/
-
-
 
 }

@@ -48,9 +48,9 @@ class OrdersTable extends Table
     }
     
     
-    public function isOwnedBy($articleId, $userId)
+    public function isOwnedBy($orderId, $userId)
 {
-    return $this->exists(['id' => $articleId, 'user_id' => $userId]);
+    return $this->exists(['id' => $orderId, 'user_id' => $userId]);
 }
 
  

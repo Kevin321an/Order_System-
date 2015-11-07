@@ -76,6 +76,10 @@ legend {
   margin-top: -80px;
   font-size:16px;
 }
+.topColor{
+  color:#FFFFFF; 
+
+}
 
 .header-help span {
   font-weight: normal;
