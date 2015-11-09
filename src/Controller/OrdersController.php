@@ -25,32 +25,9 @@ class OrdersController extends AppController
         
         $this->set('orders', $orders);
         $this->set('_serialize', ['orders']);
-        
-        //to do  find where claus
-       /* $CompleteOrders = $orders->find('all')
-        ->where(['Complete' => 0])
-        ->contain(['Comments', 'Authors'])
-        ->limit(10);*/
-        /*$query = $order->find('all');
-        foreach ($query as $row) {
-            }
-       
-        
-        // Calling all() will execute the query
-        // and return the result set.
-        $results = $query->all();
-
-        // Once we have a result set we can get all the rows
-        $data = $results->toArray();
-
-        // Converting the query to an array will execute it.
-        $results = $query->toArray();*/
+               
         $CompleteOrders = $this->Orders->find('all')
             -> where (['complete' => '1']);
-        
-        /*,[
-            'conditions' => ['complete' => '1']
-            ]);*/         
         
          $this->set('CompleteOrders', $CompleteOrders);
          $this->set('_serialize', ['$CompleteOrders']);

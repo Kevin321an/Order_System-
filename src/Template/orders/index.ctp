@@ -8,6 +8,7 @@
 
 <section class="top-bar-section">
             <ul class="right">
+                <li><?= $this->Html->link('SING IN', ['action' => 'add', 'controller' => 'users']) ?></li>
                 <li><?= $this->Html->link('LOG IN', ['action' => 'login', 'controller' => 'users']) ?></li>
                 <li><?= $this->Html->link('LOG OUT', ['action' => 'logout', 'controller' => 'users']) ?></li>
             </ul>
